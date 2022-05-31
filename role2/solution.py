@@ -28,9 +28,8 @@ def findsolution(x): #x라는 데이터프레임의 솔루션을 구한다
     solvals = []
     for j in range(n): #0부터 n-1까지 = 기계 A~(C)/(D) 까지
         solindex.append('기계'+chr(j+65))
-        solvals.append('작업'+str(assign[j]+1))
-    solindex.append('총비용')
+        solvals.append('작업'+str(assign[j]+1)) #solution을 list에 저장하고series로 합친 후 이것을 csv파일에 넣음
+    solindex.append('비용')
     solvals.append(solution)     #최종적으로 최적화된 총비용도 Series 데이터에 추가함
-    solser = pd.DataFrame(solvals, index=solindex, columns=['solution'])
-
-    return solser
+    # print(solindex , solvals)
+    return pd.Series(solvals, index=solindex)
