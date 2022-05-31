@@ -7,4 +7,4 @@ if __name__ == '__main__': #패키지 파일에서 main 파일엔 이 문장이 
     print(dt)
     print("----------Solution-----------")
     print(findsolution(dt)) #findsolution 함수에 dt 입력
-    writesolutionfile(dt, findsolution(dt))    #파일에 데이터데이블과 결과가 담긴 Series 데이터를 추가
+    writesolutionfile(findsolution(dt))    #파일에 데이터데이블과 결과가 담긴 Series 데이터를 추가
