@@ -1,4 +1,8 @@
 import itertools #순열계산하는 툴
+
+import pandas as pd
+
+
 def findsolution(x): #x라는 데이터프레임의 솔루션을 구한다
     n= len(x) #x의 길이 (nxn크기일 때 n값 가져옴)
     result = list(itertools.permutations(list(range(n)),n))
@@ -20,6 +24,11 @@ def findsolution(x): #x라는 데이터프레임의 솔루션을 구한다
     #print(sum_list.index(solution)) #sum_list.index(solution)은 위의 sum_list에서 솔루션이 몇번째 인덱스인지 뽑아냄
     assign = result[sum_list.index(solution)]  #그 인덱스에 해당하는 작업 순서를 result에서 뽑음
     #print(assign)
+    solindex = []     #두 빈 리스트를 만들어 어떤 기계에 어떤 작업을 할당하였는지를 표현하는 Series 데이터를 만들 것
+    solvals = []
     for j in range(n): #0부터 n-1까지 = 기계 A~(C)/(D) 까지
-        print('기계'+chr(j+65)+': 작업'+str(assign[j]+1)) #기계별로 할당된(assign) 작업을 표시
-    return "최소의 비용은: "+str(solution) #solution 표시를 return값으로
+        solindex.append('기계'+chr(j+65))
+        solvals.append('작업'+str(assign[j]+1))
+    solindex.append('비용')
+    solvals.append(solution)     #최종적으로 최적화된 총비용도 Series 데이터에 추가함
+    return pd.Series(solvals, index=solindex)
