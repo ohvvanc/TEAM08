@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def findsolution(x): #x라는 데이터프레임의 솔루션을 구한다
-    n= len(x) #x의 길이 (nxn크기일 때 n값 가져옴)
+    n = len(x) #x의 길이 (nxn크기일 때 n값 가져옴)
     result = list(itertools.permutations(list(range(n)),n))
     #0부터 n-1까지의 값들로 만들 수 있는 모든 순서쌍을 리스트에 저장 n=3일 경우 [(0, 1, 2),(0, 2, 1),(1, 0, 2),(1, 2, 0),(2, 0, 1),(2, 1, 0)]
     #즉 기계를 작업에 할당 할 수 있는 모든 가짓수를 저장 [(A-0/B-1/C-2) ,(A-0,B-2,C-1), ...]
@@ -15,6 +15,7 @@ def findsolution(x): #x라는 데이터프레임의 솔루션을 구한다
         for i,t in enumerate(k): #k가 (0,1,2)일경우 (i,t)는인덱스와 값 (0,0),(1,1),(2,2) / (0,2,1)일경우 (i,t)는 (0,0),(1,2),(2,1)
             #print(i,t)
             cost.append(x.iloc[i,t]) #cost에 비용을하나하나 추가 11번째줄 예시에서 cost=[데이터프레임에서(0,0),(1,1),(2,2)]
+            #print(cost)
             if len(cost) == n: #리스트에 비용을 하나하나 추가하다가 n개의 작업을 하므로 리스트의 길이가 n개가 되면
                 sum_cost = sum(cost) #비용의 합을 구하고
                 sum_list.append(sum_cost) #비용의 합을 저장 n이3일 경우 6개의 합이 저장됨
