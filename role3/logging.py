@@ -7,4 +7,4 @@ formatter = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s') 
 
 stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
-logger. addHandler(stream_handelr) #logger 출력 3줄코딩
+logger. addHandler(stream_handler) #logger 출력 3줄코딩
